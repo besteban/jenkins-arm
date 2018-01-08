@@ -14,7 +14,7 @@ script:
   if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
     TAG=$(grep "ENV JENKINS_VERSION" Dockerfile | awk 'NF>1{print $NF}')
-    docker tag jenkins-arm jenkins-arm:$TAG
-    docker push jenkins-arm:$TAG
-    docker push jenkins-arm
+    docker tag besteban/jenkins-arm besteban/jenkins-arm:$TAG
+    docker push besteban/jenkins-arm:$TAG
+    docker push besteban/jenkins-arm
   fi
