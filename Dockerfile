@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y wget git
 
 ENV JENKINS_HOME /var/jenkins_home
 ENV JENKINS_SLAVE_AGENT_PORT 50000
-
+ENV JENKINS_VERSION 2.100
 # Jenkins is ran with user `jenkins`, uid = 1000
 # If you bind mount a volume from host/volume from a data container,
 # ensure you use same uid
