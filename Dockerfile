@@ -60,6 +60,10 @@ USER ${user}
 COPY jenkins-support /usr/local/bin/jenkins-support
 COPY jenkins.sh /usr/local/bin/jenkins.sh
 
+USER root
+RUN chmod +x /usr/local/bin/jenkins.sh
+
+USER ${user}
 
 ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/jenkins.sh"]
 
