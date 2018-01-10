@@ -8,13 +8,11 @@ ARG group=jenkins
 ARG uid=1000
 ARG gid=1000
 
-RUN apt-get update &&\
-    apt-get install -y wget \
-                       git \
-                       curl \
-                       apt-transport-https \
-                       apt-utils &&\
-    apt-get clean
+RUN apt-get update \
+  && apt-get install -y bash git curl zip build-essential \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 
 # Jenkins is run with user `jenkins`, uid = 1000
 # If you bind mount a volume from the host or a data container, 
