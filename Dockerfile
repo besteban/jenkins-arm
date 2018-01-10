@@ -1,4 +1,4 @@
-FOM hypriot/rpi-java
+FROM hypriot/rpi-java
 
 ENV JENKINS_HOME /var/jenkins_home
 ENV JENKINS_SLAVE_AGENT_PORT 50000
