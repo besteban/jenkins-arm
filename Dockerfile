@@ -12,6 +12,7 @@ RUN apt-get update &&\
     apt-get install -y wget \
                        git \
                        curl \
+                       ca-certificates-java \
                        apt-transport-https \
                        apt-utils &&\
     apt-get clean
