@@ -1,4 +1,4 @@
-FROM hypriot/rpi-java
+FROM kodbasen/java-jdk-arm:jdk-8u111-b14
 
 ENV JENKINS_HOME /var/jenkins_home
 ENV JENKINS_SLAVE_AGENT_PORT 50000
@@ -12,7 +12,6 @@ RUN apt-get update &&\
     apt-get install -y wget \
                        git \
                        curl \
-                       ca-certificates-java \
                        apt-transport-https \
                        apt-utils &&\
     apt-get clean
