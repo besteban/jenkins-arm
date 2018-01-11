@@ -23,7 +23,7 @@ ARG gid=1000
 # If you bind mount a volume from the host or a data container,
 # ensure you use the same uid
 RUN addgroup -g ${gid} ${group} \
-    && adduser  -h "$JENKINS_HOME" -u ${uid} -g ${gid} -m -s /bin/bash ${user}
+    && adduser  -h "$JENKINS_HOME" -u ${uid} -g ${gid} -s /bin/bash -G ${user}
 
 # Jenkins home directory is a volume, so configuration and build history
 # can be persisted and survive image upgrades
