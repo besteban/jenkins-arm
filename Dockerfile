@@ -1,4 +1,4 @@
-FROM openjdk/jdk-alpine:latest
+FROM openjdk/8u151-jdk-alpine3.7
 
 RUN apk update
 RUN apk add \
