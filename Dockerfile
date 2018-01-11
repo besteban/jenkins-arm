@@ -1,8 +1,8 @@
 FROM arm64v8/openjdk:alpine
 
-RUN apt-get update \
-  && apt-get install -y bash git curl zip \
-  && apt-get clean 
+#RUN apt-get update \
+#  && apt-get install -y bash git curl zip \
+#  && apt-get clean 
 #  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENV JENKINS_HOME /var/jenkins_home
