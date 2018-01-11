@@ -47,7 +47,8 @@ ENV JENKINS_VERSION ${JENKINS_VERSION:-2.50}
 RUN curl -fsSL http://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/${JENKINS_VERSION}/jenkins-war-${JENKINS_VERSION}.war -o /usr/share/jenkins/jenkins.war
 
 ENV JENKINS_UC https://updates.jenkins.io
-RUN chown -R ${user} "$JENKINS_HOME" /usr/share/jenkins/ref
+RUN chown -R jenkins:jenkins "$JENKINS_HOME" /usr/share/jenkins/ref /usr/share/jenkins /usr/local/bin /usr/bin
+RUN chmod -R 775 "$JENKINS_HOME" /usr/share/jenkins/ref /usr/share/jenkins /usr/local/bin /usr/bin
 
 # for main web interface:
 EXPOSE 8080
@@ -61,6 +62,7 @@ USER ${user}
 
 COPY jenkins-support /usr/local/bin/jenkins-support
 COPY jenkins.sh /usr/local/bin/jenkins.sh
+
 #ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/jenkins.sh"]
 ENTRYPOINT ["/usr/local/bin/jenkins.sh"]
 # from a derived Dockerfile, can use `RUN plugins.sh active.txt` to setup /usr/share/jenkins/ref/plugins from a support bundle
