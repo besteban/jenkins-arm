@@ -1,9 +1,9 @@
 FROM arm64v8/openjdk:alpine
 
-#RUN apt-get update \
-#  && apt-get install -y bash git curl zip \
-#  && apt-get clean 
-#  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apk update \
+  && apk add -y bash git curl zip \
+  && apk cache clean 
+  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENV JENKINS_HOME /var/jenkins_home
 ENV JENKINS_SLAVE_AGENT_PORT 50000
