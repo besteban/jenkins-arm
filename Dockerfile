@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM jdk-alpine:latest
 
 RUN apk update
 RUN apk add \
