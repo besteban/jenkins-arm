@@ -1,4 +1,4 @@
-FROM arm32v5/openjdk:8u151-jdk-slim-stretch
+FROM arm32v5/openjdk:8-jdk-slim-stretch
 
 RUN apt-get update \
   && apt-get install -y bash git curl zip build-essential \
@@ -31,15 +31,17 @@ RUN mkdir -p /usr/share/jenkins/ref/init.groovy.d
 COPY tini /bin/tini
 RUN chmod +x /bin/tini
 
+
 COPY init.groovy /usr/share/jenkins/ref/init.groovy.d/tcp-slave-agent-port.groovy
 
 ARG JENKINS_VERSION
 ENV JENKINS_VERSION ${JENKINS_VERSION:-2.50}
 
-
 # could use ADD but this one does not check Last-Modified header
 # see https://github.com/docker/docker/issues/8331
+
 RUN curl -fsSL http://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/${JENKINS_VERSION}/jenkins-war-${JENKINS_VERSION}.war -o /usr/share/jenkins/jenkins.war 
+
 
 ENV JENKINS_UC https://updates.jenkins.io
 RUN chown -R ${user} "$JENKINS_HOME" /usr/share/jenkins/ref
@@ -56,8 +58,10 @@ USER ${user}
 
 COPY jenkins-support /usr/local/bin/jenkins-support
 COPY jenkins.sh /usr/local/bin/jenkins.sh
+
 ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/jenkins.sh"]
 
 # from a derived Dockerfile, can use `RUN plugins.sh active.txt` to setup /usr/share/jenkins/ref/plugins from a support bundle
+
 COPY plugins.sh /usr/local/bin/plugins.sh
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
