@@ -2,7 +2,7 @@ FROM arm64v8/openjdk:alpine
 
 RUN apk update \
   && apk add -y bash git curl zip \
-  && apk cache clean 
+  && apk cache clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENV JENKINS_HOME /var/jenkins_home
