@@ -1,4 +1,4 @@
-FROM arm64v8/openjdk:8
+FROM arm64v8/openjdk:alpine
 
 RUN apt-get update \
   && apt-get install -y bash git curl zip \
