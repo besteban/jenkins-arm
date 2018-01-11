@@ -1,6 +1,6 @@
-FROM arm64v8/openjdk:alpine
+FROM arm32v5/openjdk:8
 
-RUN apk update 
+RUN apt-get update 
 #  && apk add -y bash git curl zip \
 #  && apk cache clean \
 #  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
