@@ -1,4 +1,4 @@
-FROM besteban/java-jdk-arm:latest
+FROM arm32v5/openjdk:8u151-jdk-slim-stretch
 
 RUN apk update
 RUN apk add \
